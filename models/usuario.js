@@ -15,9 +15,13 @@ var usuarioSchema = new Schema({
     password: { type: String, required: [true, 'La contraseña es necesario'] },
     img: { type: String, required: false},
     role: { type: String, required: true, default: 'USER_ROLE', enum: rolesValidos },
-
+    decks: [
+        {
+            deck:[{ type: String }],
+            sideck: [{ type: String }], 
+        }]
 });
 
 usuarioSchema.plugin(uniqueValidato, {message: '{PATH} debe ser unico'});
 
-module.exports = mongoose.model('usuario', usuarioSchema);
+module.exports = mongoose.model('Usuario', usuarioSchema);

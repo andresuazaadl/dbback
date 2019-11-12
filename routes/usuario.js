@@ -74,10 +74,10 @@ app.put('/:id', mdAutenticacion.verificaToken,(req,res) => {
 
 // CREAR USUARIO
 
-app.post('/', mdAutenticacion.verificaToken, (req, res) => {
+app.post('/', (req, res) => {
 
     var body = req.body;
-    var usuario = Usuaurio({
+    var usuario = new Usuaurio({
         nombre: body.nombre,
         email: body.email,
         password: bcrypt.hashSync( body.password, 10 ),

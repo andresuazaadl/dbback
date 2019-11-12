@@ -15,13 +15,23 @@ app.use(bodyParser.json())
 var appRoutes = require('./routes/app');
 var usuarioRoutes = require('./routes/usuario');
 var loginRoutes = require('./routes/login');
+var cartaRoutes = require('./routes/carta');
+var deckRoutes = require('./routes/deck');
+var busquedaRoutes = require('./routes/busqueda');
+var uploadRoutes = require('./routes/upload');
+
 
 //Conexion a la base de datos
 mongoose.connection.openUri('mongodb://localhost:27017/dragon-ball-db',  {useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true });
 
 //Rutas
-app.use('/login', loginRoutes);
 app.use('/usuario', usuarioRoutes);
+app.use('/carta', cartaRoutes);
+app.use('/deck', deckRoutes);
+app.use('/login', loginRoutes);
+app.use('/upload', uploadRoutes);
+app.use('/busqueda', busquedaRoutes);
+
 app.use('/', appRoutes);
 
 //Escuchar peticiones
